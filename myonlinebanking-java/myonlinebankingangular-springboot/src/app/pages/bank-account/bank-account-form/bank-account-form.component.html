@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-xl-12 col-md-12">
+    <div class="container-fluid">
+      <div class="card rounded-0">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="page-title">
+              <h5 *ngIf="!accountId">Create Bank Account</h5>
+              <h5 *ngIf="accountId">Edit Bank Account</h5>
+            </span>
+            <span class="back-button">
+              <button
+                class="btn btn-default rounded-0"
+                [routerLink]="['/bankaccounts']"
+              >
+                <i class="fas fa-arrow-left"> Back</i>
+              </button>
+            </span>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="bankaccountForm" (ngSubmit)="submitForm()">
+            <div class="form-group">
+              <label for="accountName">Account Name</label>
+              <input
+                type="text"
+                formControlName="accountName"
+                class="form-control rounded-0"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="address">Account Number</label>
+              <input
+                type="text"
+                formControlName="accountNumber"
+                class="form-control rounded-0"
+              />
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <textarea
+                formControlName="address"
+                class="form-control rounded-0"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="address">Gender</label>
+              <select formControlName="gender" class="form-control rounded-0">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+            <button
+              class="btn btn-primary float-left float-sm-left btn-rounded"
+              [disabled]="!bankaccountForm.valid"
+              type="submit"
+            >
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
